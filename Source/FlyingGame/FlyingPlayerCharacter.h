@@ -16,11 +16,11 @@ public:
 	AFlyingPlayerCharacter();
 
 	UPROPERTY(EditAnywhere)
-		float Acceleration;
+		float Acceleration = 30.0f;
 	UPROPERTY(EditAnywhere)
-		float minSpeed;
+		float minSpeed = 500.0f;
 	UPROPERTY(EditAnywhere)
-		float maxSpeed;
+		float maxSpeed = 4000.0f;
 
 	float forwardSpeed; 
 	float yawSpeed; 
@@ -31,4 +31,20 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-publ
+	void UpdateKeyPitch(float rate);
+	void UpdateKeyRoll(float rate);
+
+	void mouseXInputEvent(float amount);
+	void mouseYInputEvent(float amount);
+
+	//roatation
+	void UpdatePitch(float rate);
+	void UpdateRoll(float rate);
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+};
